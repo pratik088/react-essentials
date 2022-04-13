@@ -1,4 +1,4 @@
-import React , { useState } from 'react';
+import React , { useState, useEffect } from 'react';
 import './App.css';
 
 function SecretComponent(){
@@ -12,12 +12,25 @@ function RegularComponent () {
   /* When the app runs the initial state is going to be happy. */
   function App() {
     const [emotion, setEmotion] = useState("happy");
+    const [secondary, setSecondary] = useState("tired");
+
+    useEffect(() => {
+       console.log(`It's ${emotion} around here!`);
+      }, [emotion]);
+
+      useEffect(() => {
+        console.log(`It's ${secondary} around here!`);
+       }, [secondary]);
 
     return (
       <>
-       <h1>Current emotion is {emotion}.</h1>
-       
-       <button onClick={() => setEmotion("happy")}> Happy </button>
+       <h1>Current emotion is {emotion} and {secondary}.</h1>
+
+       <button onClick={() => setEmotion("happy")}>Make happy </button>
+
+       <button onClick={() => setSecondary("tired")}> Make tired </button>
+
+       <button onClick={() => setSecondary("crabby")}> Make crabby </button>
 
        <button onClick={() => setEmotion("frustrated")}> Frustrate </button>
        
