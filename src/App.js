@@ -1,6 +1,43 @@
-import React , { useState , useEffect } from 'react';
+import React from 'react';
 import './App.css';
+import {Routes, Route} from "react-router-dom";
+import {
+  Home,
+  About,
+  Events,
+  Contact,
+  Whoops404,
+  Services,
+  CompanyHistory,
+  Location
+} from "./pages"
 
+function App() {
+  return (
+    <div>
+      <Routes>
+        <Route path="/" element={<Home />} />
+       
+        <Route path="/about" element={<About />}>
+        <Route path="services" element={<Services />} />
+        <Route path="history" element={<CompanyHistory />} />
+        <Route path="location" element={<Location />} />
+
+          </Route>
+        <Route path="/events" element={<Events />} />
+        <Route path="/contact" element={<Contact />} />
+        <Route path="*" element={<Whoops404 />} />
+      </Routes>
+    </div>
+  );
+}
+
+export default App;
+
+
+/* 
+
+// Fetching and displaying from api
 //https://api.github.com/users/pratik088
 
   function App({ login }) {
@@ -33,5 +70,4 @@ import './App.css';
 
     return <div> No user available.</div>
   }
-
-export default App;
+*/
